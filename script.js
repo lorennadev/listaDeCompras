@@ -12,7 +12,7 @@ function adicionarItem(e) {
     const containerItemLista = document.createElement('div');
     containerItemLista.classList.add('lista-item-container');
 
-    const containerNomeDoItem =document.createElement('div');
+    const containerNomeDoItem = document.createElement('div');
 
     const containerCheckbox = document.createElement('div');
     containerCheckbox.classList.add('container-checkbox');
@@ -24,6 +24,17 @@ function adicionarItem(e) {
 
     const checkboxLabel = document.createElement('label');
     checkboxLabel.setAttribute('for', checkboxInput.id)
+
+    checkboxLabel.addEventListener('click',  function(evento) {
+        const checkboxInput = evento.currentTarget.querySelector('.input-checkbox')
+        const checkboxCustomizado = evento.currentTarget.querySelector('.checkbox-customizado')
+
+        if(checkboxInput.checked) {
+            checkboxCustomizado.classList.add('checked');
+        } else {
+            checkboxCustomizado.classList.remove('checked');
+        }
+    });
 
     const checkboxCustomizado = document.createElement('div');
     checkboxCustomizado.classList.add('checkbox-customizado');
@@ -53,7 +64,6 @@ function adicionarItem(e) {
     const imagemEditar = document.createElement('img');
     imagemEditar.src = 'img/edit.svg' 
     imagemEditar.alt ='Editar'
-
 
     botaoRemover.appendChild(imagemRemover);
     containerBotoes.appendChild(botaoRemover);
